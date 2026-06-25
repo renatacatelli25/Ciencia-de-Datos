@@ -1,1 +1,7 @@
 pandas==3.0.3
+matplotlib
+seaborn
+wordcloud
+spacy
+numpy
+beautifulsoup4
