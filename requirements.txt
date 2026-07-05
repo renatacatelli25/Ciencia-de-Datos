@@ -5,3 +5,4 @@ wordcloud
 spacy
 numpy
 beautifulsoup4
+langchain-text-splitters
