@@ -1,0 +1,58 @@
+    [
+    {
+        "question": "What do customers say about the taste and texture of the oatmeal cookies?",
+        "relevant_product_ids": ["B007JFMH8M"]
+    },
+    {
+        "question": "Are there dog treats that help reduce nighttime coughing in older dogs?",
+        "relevant_product_ids": ["B002QWP89S", "B002QWP8H0", "B002QWHJOU", "B0026RQTGE"]
+    },
+    {
+        "question": "Which coconut oil is described as high quality and organic, good for popcorn?",
+        "relevant_product_ids": ["B001EO5Q64"]
+    },
+    {
+        "question": "What coconut oil is recommended for sweet dishes, like bread with honey?",
+        "relevant_product_ids": ["B003B3OOPA"]
+    },
+    {
+        "question": "What chips are a healthier, puffed alternative to regular potato chips?",
+        "relevant_product_ids": ["B0026KPDG8", "B0026KNQSA", "B006HYLW32"]
+    },
+    {
+        "question": "Are these dates good quality, with proper packaging and nutrition facts?",
+        "relevant_product_ids": ["B000F9J43K"]
+    },
+    {
+        "question": "Which dark chocolate is described as smooth and not too bitter?",
+        "relevant_product_ids": ["B0009Z9FFW"]
+    },
+    {
+        "question": "Is there a honey mustard mayonnaise sauce good for sandwiches?",
+        "relevant_product_ids": ["B000EY7P96"]
+    },
+    {
+        "question": "What dog food has no poultry by-products and is gentle on digestion?",
+        "relevant_product_ids": ["B0018CIOJ8"]
+    },
+    {
+        "question": "Is there a sweet cornbread mix that tastes almost like cake?",
+        "relevant_product_ids": ["B001EO5QKA"]
+    },
+    {
+        "question": "What spice mix works well for making Dal Makhani at home?",
+        "relevant_product_ids": ["B002C2ROCG"]
+    },
+    {
+        "question": "Is there a manuka honey good for tea that also boosts the immune system?",
+        "relevant_product_ids": ["B002FBD3J2"]
+    },
+    {
+        "question": "Which beef jerky has a soft texture with a honey chipotle flavor?",
+        "relevant_product_ids": ["B0029JZNES"]
+    },
+    {
+        "question": "Which product has complaints about receiving the wrong brand or vendor?",
+        "relevant_product_ids": ["B002FBD3J2"]
+    }
+]

@@ -5,3 +5,9 @@ wordcloud
 spacy
 numpy
 beautifulsoup4
+openai
+sentence-transformers 
+chromadb 
+langchain
+langchain-text-splitters
+tqdm
