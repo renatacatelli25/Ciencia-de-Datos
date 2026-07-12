@@ -1,0 +1,120 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+.env.bak
+
+# Dependencias / cachés de herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+pip-log.txt
+pip-delete-this-directory.txt
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- Node.js (por si agregás frontend o scripts npm) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# --- Secretos y configuración local ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# --- IDE / editor ---
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Sistema operativo ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# --- Proyecto: bases vectoriales Chroma ---
+# Solo ignoramos índices experimentales o duplicados.
+# SÍ subir chroma_db_productos_openai/ → índice final del agente (~6 MB).
+chroma_db/
+chroma_db_local/
+chroma_db_final/
+chroma_db_productos/
+
+# --- Proyecto: datos y checkpoints ---
+# Reviews.csv pesa ~287 MB (GitHub rechaza archivos >100 MB).
+# Opciones: Git LFS, release en GitHub, o link externo (Drive, etc.).
+src/data/*.csv
+src/data/*.json
+src/data/*.parquet
+
+# Checkpoints útiles para no re-ejecutar APIs ni procesamiento:
+#   descripciones_checkpoint.csv  → descripciones generadas (usa agent.py)
+#   product_names_checkpoint.csv    → nombres inferidos de productos
+# Solo ignoramos archivos de validación intermedia:
+descripciones_validacion.csv
+
+# --- Proyecto: archivos generados / temporales ---
+utils.zip
+tmp_*.py
+*.log
+*.tmp
+*.temp
+
+# --- Modelos y cachés de ML (sentence-transformers, huggingface, etc.) ---
+.cache/
+models/
+checkpoints/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.pkl
+*.pickle

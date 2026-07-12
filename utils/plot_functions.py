@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from pathlib import Path
 
 plt.rcParams.update({
     "figure.facecolor": "white",
@@ -23,6 +24,15 @@ PALETTE = {
 }
 COLOR_MAIN = "#534AB7"
 COLOR_SEC  = "#1D9E75"
+
+RESULTS_DIR = Path(__file__).resolve().parents[1] / "EDA results"
+RESULTS_DIR.mkdir(exist_ok=True)
+
+def _save_plot(filename: str):
+    """Guarda la figura actual en la carpeta EDA results."""
+    save_path = RESULTS_DIR / filename
+    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    return save_path
 
 
 def plot_score_distribution(df: pd.DataFrame):
@@ -48,6 +58,7 @@ def plot_score_distribution(df: pd.DataFrame):
     ax.set_xticks(range(1, 6))
     ax.set_xticklabels([f"★{i}\n{pct[i]:.1f}%" for i in range(1, 6)])
     plt.tight_layout()
+    _save_plot("01_score_distribution.png")
     plt.show()
 
 def plot_text_length_distribution(df: pd.DataFrame):
@@ -70,17 +81,15 @@ def plot_text_length_distribution(df: pd.DataFrame):
     ax.set_ylabel("Frecuencia")
     ax.legend(fontsize=9)
     plt.tight_layout()
-    plt.savefig("02_text_length_distribution.png", dpi=150)
+    _save_plot("02_text_length_distribution.png")
     plt.show()
 
 def plot_reviews_over_time(df: pd.DataFrame):
     """Serie temporal: cantidad de reseñas por mes."""
-    # Agrupamos por mes directamente usando la frecuencia 'ME' (Month End)
     monthly = df.groupby(pd.Grouper(key="Time", freq="ME")).size().reset_index(name="count")
  
     fig, ax = plt.subplots(figsize=(10, 4))
     
-    # Usamos directamente 'Time' que ya contiene las fechas mensuales correctas
     ax.fill_between(monthly["Time"], monthly["count"],
                     alpha=0.25, color=COLOR_MAIN)
     ax.plot(monthly["Time"], monthly["count"],
@@ -90,7 +99,7 @@ def plot_reviews_over_time(df: pd.DataFrame):
     ax.set_xlabel("Fecha")
     ax.set_ylabel("Reseñas por mes")
     plt.tight_layout()
-    plt.savefig("03_reviews_over_time.png", dpi=150)
+    _save_plot("03_reviews_over_time.png")
     plt.show()
 
 
@@ -110,7 +119,7 @@ def plot_top_products(df: pd.DataFrame, top_n: int = 20):
     ax.set_xlabel("Cantidad de reseñas")
     ax.set_ylabel("ProductId")
     plt.tight_layout()
-    plt.savefig("04_top_products.png", dpi=150)
+    _save_plot("04_top_products.png")
     plt.show()
  
  
@@ -126,7 +135,7 @@ def plot_top_users(df: pd.DataFrame, top_n: int = 20):
     ax.set_xlabel("Cantidad de reseñas")
     ax.set_ylabel("UserId")
     plt.tight_layout()
-    plt.savefig("05_top_users.png", dpi=150)
+    _save_plot("05_top_users.png")
     plt.show()
  
  
@@ -136,7 +145,6 @@ def plot_reviews_per_user_distribution(df: pd.DataFrame):
  
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
  
-    # Histograma (escala log en y)
     axes[0].hist(reviews_per_user, bins=50,
                  color=COLOR_MAIN, alpha=0.8, edgecolor="white")
     axes[0].set_yscale("log")
@@ -144,7 +152,6 @@ def plot_reviews_per_user_distribution(df: pd.DataFrame):
     axes[0].set_xlabel("Número de reseñas")
     axes[0].set_ylabel("Cantidad de usuarios (log)")
  
-    # Tabla de concentración
     buckets = pd.cut(reviews_per_user,
                      bins=[0, 1, 5, 10, 50, reviews_per_user.max()],
                      labels=["1", "2-5", "6-10", "11-50", "50+"])
@@ -156,7 +163,7 @@ def plot_reviews_per_user_distribution(df: pd.DataFrame):
     axes[1].set_ylabel("Usuarios")
  
     plt.tight_layout()
-    plt.savefig("06_reviews_per_user.png", dpi=150)
+    _save_plot("06_reviews_per_user.png")
     plt.show()
 
 def plot_helpfulness_ratio_by_score(df: pd.DataFrame):
@@ -179,7 +186,7 @@ def plot_helpfulness_ratio_by_score(df: pd.DataFrame):
     ax.set_ylabel("Helpfulness ratio (num / den)")
     ax.set_xticklabels([f"★{i}" for i in range(1, 6)])
     plt.tight_layout()
-    plt.savefig("07_helpfulness_by_score.png", dpi=150)
+    _save_plot("07_helpfulness_by_score.png")
     plt.show()
  
  
@@ -189,7 +196,6 @@ def plot_denominator_distribution(df: pd.DataFrame):
  
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
  
-    # % de reseñas sin votos vs con votos
     no_votes = (denom == 0).sum()
     has_votes = (denom > 0).sum()
     axes[0].pie([no_votes, has_votes],
@@ -199,7 +205,6 @@ def plot_denominator_distribution(df: pd.DataFrame):
                 textprops={"fontsize": 10})
     axes[0].set_title("Reseñas con y sin votos de helpfulness")
  
-    # Histograma (solo reseñas con >0 votos, cap en p99)
     d = denom[denom > 0].clip(upper=denom.quantile(0.99))
     axes[1].hist(d, bins=50, color=COLOR_SEC, alpha=0.8, edgecolor="white")
     axes[1].set_title("Distribución de votos recibidos (excl. 0)")
@@ -207,7 +212,7 @@ def plot_denominator_distribution(df: pd.DataFrame):
     axes[1].set_ylabel("Frecuencia")
  
     plt.tight_layout()
-    plt.savefig("08_denominator_distribution.png", dpi=150)
+    _save_plot("08_denominator_distribution.png")
     plt.show()
  
  
@@ -216,7 +221,6 @@ def plot_text_length_vs_helpfulness(df: pd.DataFrame, sample_n: int = 5000):
     df_h = df[(df["HelpfulnessDenominator"] > 0) &
               df["helpfulness_ratio"].notna()].copy()
  
-    # Muestra para no saturar el plot
     df_sample = df_h.sample(min(sample_n, len(df_h)), random_state=42)
  
     fig, ax = plt.subplots(figsize=(8, 5))
@@ -234,5 +238,5 @@ def plot_text_length_vs_helpfulness(df: pd.DataFrame, sample_n: int = 5000):
     ax.legend(title="Score", fontsize=8, title_fontsize=8,
               loc="upper right", markerscale=2)
     plt.tight_layout()
-    plt.savefig("09_length_vs_helpfulness.png", dpi=150)
+    _save_plot("09_length_vs_helpfulness.png")
     plt.show()
