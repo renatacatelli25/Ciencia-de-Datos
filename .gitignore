@@ -89,9 +89,9 @@ chroma_db_final/
 chroma_db_productos/
 
 # --- Proyecto: datos y checkpoints ---
-# Reviews.csv pesa ~287 MB (GitHub rechaza archivos >100 MB).
-# Opciones: Git LFS, release en GitHub, o link externo (Drive, etc.).
+# Reviews.csv se versiona con Git LFS (ver .gitattributes).
 src/data/*.csv
+!src/data/Reviews.csv
 src/data/*.json
 src/data/*.parquet
 

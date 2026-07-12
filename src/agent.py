@@ -4,7 +4,7 @@ import json
 import os
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Optional, TypedDict
+from typing import Any, Dict, List, Optional, Tuple, TypedDict
 
 try:
     from langgraph.graph import END, StateGraph
@@ -74,26 +74,35 @@ def _load_reviews_df() -> pd.DataFrame:
     return df
 
 
-def _load_product_catalog() -> List[Dict[str, Any]]:
-    df = _load_reviews_df()
-    if DESCRIPTIONS_PATH.exists():
-        try:
-            desc_df = pd.read_csv(DESCRIPTIONS_PATH)
-            if {"product_id", "descripcion"}.issubset(desc_df.columns):
-                catalog = []
-                for _, row in desc_df.iterrows():
-                    catalog.append(
-                        {
-                            "product_id": row["product_id"],
-                            "descripcion": row.get("descripcion", ""),
-                            "nombre": row.get("product_name_inferred") or row.get("product_name") or "Producto",
-                        }
-                    )
-                if catalog:
-                    return catalog
-        except Exception:
-            pass
+def _load_catalog_from_checkpoint() -> Optional[List[Dict[str, Any]]]:
+    if not DESCRIPTIONS_PATH.exists():
+        return None
 
+    try:
+        desc_df = pd.read_csv(DESCRIPTIONS_PATH)
+        if not {"product_id", "descripcion"}.issubset(desc_df.columns):
+            return None
+
+        catalog = []
+        for _, row in desc_df.iterrows():
+            catalog.append(
+                {
+                    "product_id": row["product_id"],
+                    "descripcion": row.get("descripcion", ""),
+                    "nombre": row.get("product_name_inferred") or row.get("product_name") or "Producto",
+                }
+            )
+        return catalog or None
+    except Exception:
+        return None
+
+
+def _load_product_catalog() -> List[Dict[str, Any]]:
+    catalog = _load_catalog_from_checkpoint()
+    if catalog:
+        return catalog
+
+    df = _load_reviews_df()
     groups = []
     for product_id, group in df.groupby("ProductId", sort=False):
         group = group.sort_values("helpfulness_ratio", ascending=False)
