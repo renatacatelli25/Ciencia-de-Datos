@@ -7,13 +7,25 @@ from typing import Any, Dict, List, Literal, Optional, TypedDict
 from langchain_openai import ChatOpenAI
 from typing_extensions import Annotated
 
-from utils.chunk_functions import recall_at_k, reciprocal_rank
-from utils.local_evaluators import (
-    evaluate_correctness_local,
-    evaluate_groundedness_local,
-    evaluate_relevance_local,
-    evaluate_retrieval_relevance_local,
-)
+try:
+    from utils.chunk_functions import recall_at_k, reciprocal_rank
+except ModuleNotFoundError:
+    from chunk_functions import recall_at_k, reciprocal_rank
+
+try:
+    from utils.local_evaluators import (
+        evaluate_correctness_local,
+        evaluate_groundedness_local,
+        evaluate_relevance_local,
+        evaluate_retrieval_relevance_local,
+    )
+except ModuleNotFoundError:
+    from local_evaluators import (
+        evaluate_correctness_local,
+        evaluate_groundedness_local,
+        evaluate_relevance_local,
+        evaluate_retrieval_relevance_local,
+    )
 
 EvalMode = Literal["api", "local"]
 

@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+# Importante: configurar el path del proyecto ANTES de importar utils/src.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import argparse
 import json
-import sys
 from datetime import datetime
-from pathlib import Path
 
 import pandas as pd
 
@@ -16,13 +22,15 @@ except ImportError:
     def load_dotenv(*args, **kwargs):
         return False
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(PROJECT_ROOT / ".env")
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.rag_target import agent_target
-from utils.rag_evaluators import evaluate_example, summarize_results
+
+try:
+    from utils.rag_evaluators import evaluate_example, summarize_results
+except ModuleNotFoundError:
+    # Fallback si Python no resuelve el paquete utils (Windows / cwd distinto)
+    from rag_evaluators import evaluate_example, summarize_results
 
 
 def load_golden_set(path: Path) -> list[dict]:

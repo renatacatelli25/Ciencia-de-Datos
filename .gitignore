@@ -87,6 +87,7 @@ chroma_db/
 chroma_db_local/
 chroma_db_final/
 chroma_db_productos/
+chroma_db.zip
 
 # --- Proyecto: datos y checkpoints ---
 # Reviews.csv se versiona con Git LFS (ver .gitattributes).

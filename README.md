@@ -72,14 +72,20 @@ Evaluación al estilo LangSmith, sin dependencias de LangSmith.
 - Evaluadores: LLM-as-judge con `gpt-4o-mini`
 
 ```bash
-# Sin API — agente + evaluadores locales (14 preguntas)
+# Recomendado (desde la raíz del repo, menos problemas de imports en Windows)
+python run_eval.py --mode local
+
+# Alternativa equivalente
+python -m utils.run_rag_eval --mode local
+
+# También funciona
 python utils/run_rag_eval.py --mode local
 
 # Solo métricas determinísticas, cero API
-python utils/run_rag_eval.py --mode local --skip-llm --limit 2
+python run_eval.py --mode local --skip-llm --limit 2
 
 # Con API — evaluación completa estilo LangSmith
-python utils/run_rag_eval.py --mode api
+python run_eval.py --mode api
 ```
 
 Resultados en `results/agent_eval_*.csv` y `results/agent_eval_summary_*.json`.
