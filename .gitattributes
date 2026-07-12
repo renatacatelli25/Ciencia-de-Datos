@@ -1,1 +1,4 @@
 src/data/Reviews.csv filter=lfs diff=lfs merge=lfs -text
+chroma_db_productos_openai/** filter=lfs diff=lfs merge=lfs -text
+chroma_db_productos/** filter=lfs diff=lfs merge=lfs -text
+chroma_db.zip filter=lfs diff=lfs merge=lfs -text

@@ -6,7 +6,7 @@ Proyecto de ciencia de datos con agente de búsqueda de productos sobre reviews 
 
 ### 1. Clonar con Git LFS
 
-`Reviews.csv` (~287 MB) se versiona con Git LFS. Necesitás tener [Git LFS](https://git-lfs.com/) instalado:
+`Reviews.csv` (~287 MB) y los índices Chroma (`chroma_db_productos/`, `chroma_db_productos_openai/`) se versionan con Git LFS. Necesitás tener [Git LFS](https://git-lfs.com/) instalado:
 
 ```bash
 git lfs install
@@ -44,7 +44,8 @@ Al clonar deberías tener:
 
 | Archivo / carpeta | Para qué sirve |
 |---|---|
-| `chroma_db_productos_openai/` | Índice vectorial del agente |
+| `chroma_db_productos_openai/` | Índice vectorial del agente (modo `api`, Git LFS) |
+| `chroma_db_productos/` | Índice vectorial para evaluación local (Git LFS) |
 | `descripciones_checkpoint.csv` | Descripciones de productos ya generadas |
 | `product_names_checkpoint.csv` | Nombres inferidos de productos |
 | `src/data/Reviews.csv` | Dataset completo (Git LFS) |

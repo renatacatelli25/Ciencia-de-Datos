@@ -80,13 +80,12 @@ ehthumbs.db
 Thumbs.db
 Desktop.ini
 
-# --- Proyecto: bases vectoriales Chroma ---
-# Solo ignoramos índices experimentales o duplicados.
-# SÍ subir chroma_db_productos_openai/ → índice final del agente (~6 MB).
+# --- Proyecto: bases vectoriales Chroma (Git LFS, ver .gitattributes) ---
+# Solo ignoramos índices experimentales o duplicados locales.
 chroma_db/
 chroma_db_local/
 chroma_db_final/
-chroma_db_productos/
+# chroma_db_productos/ y chroma_db_productos_openai/ → versionados con LFS
 chroma_db.zip
 
 # --- Proyecto: datos y checkpoints ---
