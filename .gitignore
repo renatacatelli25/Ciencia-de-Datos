@@ -107,6 +107,8 @@ tmp_*.py
 *.log
 *.tmp
 *.temp
+results/agent_eval_*.csv
+results/agent_eval_summary_*.json
 
 # --- Modelos y cachés de ML (sentence-transformers, huggingface, etc.) ---
 .cache/
