@@ -6,8 +6,11 @@ spacy
 numpy
 beautifulsoup4
 openai
+python-dotenv
 sentence-transformers 
 chromadb 
 langchain
+langchain-openai
 langchain-text-splitters
+langgraph
 tqdm

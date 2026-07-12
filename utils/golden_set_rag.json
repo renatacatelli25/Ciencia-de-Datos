@@ -1,0 +1,128 @@
+[
+  {
+    "inputs": {
+      "question": "What do customers say about the taste and texture of the oatmeal cookies?"
+    },
+    "outputs": {
+      "answer": "Customers describe Quaker Soft Baked Oatmeal Cookies as soft and chewy, with a tender texture. They mention natural flavors such as cinnamon and spices, and generally find the taste pleasant and satisfying.",
+      "relevant_product_ids": ["B007JFMH8M"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Are there dog treats that help reduce nighttime coughing in older dogs?"
+    },
+    "outputs": {
+      "answer": "Greenies dental dog treats are frequently recommended for older and small dogs to support dental health and fresher breath. Reviews highlight their popularity for oral care, though they do not specifically mention nighttime coughing.",
+      "relevant_product_ids": ["B002QWP89S", "B002QWP8H0", "B002QWHJOU", "B0026RQTGE"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Which coconut oil is described as high quality and organic, good for popcorn?"
+    },
+    "outputs": {
+      "answer": "Nutiva organic extra virgin coconut oil is described as high quality and versatile, with users praising it for cooking uses such as popcorn and eggs while providing a mild, pleasant coconut flavor.",
+      "relevant_product_ids": ["B001EO5Q64"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "What coconut oil is recommended for sweet dishes, like bread with honey?"
+    },
+    "outputs": {
+      "answer": "Nature's Way coconut oil is noted for its pleasant coconut aroma and smooth texture, making it suitable for sweet dishes and uses such as spreading on toast with honey.",
+      "relevant_product_ids": ["B003B3OOPA"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "What chips are a healthier, puffed alternative to regular potato chips?"
+    },
+    "outputs": {
+      "answer": "Popchips are described as a lighter, puffed snack alternative to traditional fried potato chips, with a crispy texture and lower fat and calorie content in several flavors such as BBQ, cheddar, and salt and vinegar.",
+      "relevant_product_ids": ["B0026KPDG8", "B0026KNQSA", "B006HYLW32"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Are these dates good quality, with proper packaging and nutrition facts?"
+    },
+    "outputs": {
+      "answer": "Reviews say the dates are quite sweet, though some find them less juicy or tender than expected. Packaging is functional but not exceptional, and nutrition information is available on the label.",
+      "relevant_product_ids": ["B000F9J43K"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Which dark chocolate is described as smooth and not too bitter?"
+    },
+    "outputs": {
+      "answer": "This dark chocolate bar is praised for being smooth and creamy, with relatively low sugar content, making it less bitter than many dark chocolates.",
+      "relevant_product_ids": ["B0009Z9FFW"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Is there a honey mustard mayonnaise sauce good for sandwiches?"
+    },
+    "outputs": {
+      "answer": "A honey mustard mayonnaise condiment combines honey, mustard, and mayo with a creamy texture that many reviewers consider ideal for sandwiches and dipping.",
+      "relevant_product_ids": ["B000EY7P96"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "What dog food has no poultry by-products and is gentle on digestion?"
+    },
+    "outputs": {
+      "answer": "A lamb and rice dog food is highlighted for containing no poultry by-products and being gentle on digestion, especially for older dogs.",
+      "relevant_product_ids": ["B0018CIOJ8"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Is there a sweet cornbread mix that tastes almost like cake?"
+    },
+    "outputs": {
+      "answer": "A cornbread mix is described as very sweet, almost cake-like, with a soft texture that makes it feel more like a dessert than a savory side.",
+      "relevant_product_ids": ["B001EO5QKA"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "What spice mix works well for making Dal Makhani at home?"
+    },
+    "outputs": {
+      "answer": "A dal makhani spice mix is praised for its rich, authentic flavor and for helping home cooks recreate a restaurant-style dish.",
+      "relevant_product_ids": ["B002C2ROCG"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Is there a manuka honey good for tea that also boosts the immune system?"
+    },
+    "outputs": {
+      "answer": "A manuka honey product is appreciated for its pleasant taste and thick texture, with users mentioning it for sweetening tea and for wellness routines.",
+      "relevant_product_ids": ["B002FBD3J2"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Which beef jerky has a soft texture with a honey chipotle flavor?"
+    },
+    "outputs": {
+      "answer": "This beef jerky offers a sweet-and-spicy honey chipotle flavor with a soft, easy-to-chew texture.",
+      "relevant_product_ids": ["B0029JZNES"]
+    }
+  },
+  {
+    "inputs": {
+      "question": "Which product has complaints about receiving the wrong brand or vendor?"
+    },
+    "outputs": {
+      "answer": "Some buyers of the manuka honey product report brand confusion, expecting Comvita but receiving a different certification or vendor than anticipated.",
+      "relevant_product_ids": ["B002FBD3J2"]
+    }
+  }
+]

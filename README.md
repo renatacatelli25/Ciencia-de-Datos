@@ -57,6 +57,40 @@ Con el checkpoint de descripciones, **`agent.py` no necesita `Reviews.csv`** par
 python -m src.agent
 ```
 
+### 6. Evaluar el agente (RAG local)
+
+Evaluación al estilo LangSmith, sin dependencias de LangSmith.
+
+**Modo `local` (recomendado para iterar sin gastar API):**
+- Embeddings: `all-MiniLM-L6-v2` + índice `chroma_db_productos/`
+- Agente: CrossEncoder + reglas heurísticas (sin OpenAI)
+- Evaluadores: heurísticas léxicas (sin OpenAI)
+
+**Modo `api` (más fiel al agente del notebook):**
+- Embeddings: OpenAI + índice `chroma_db_productos_openai/`
+- Agente: extract_filters, grade y generate con `gpt-4o-mini`
+- Evaluadores: LLM-as-judge con `gpt-4o-mini`
+
+```bash
+# Sin API — agente + evaluadores locales (14 preguntas)
+python utils/run_rag_eval.py --mode local
+
+# Solo métricas determinísticas, cero API
+python utils/run_rag_eval.py --mode local --skip-llm --limit 2
+
+# Con API — evaluación completa estilo LangSmith
+python utils/run_rag_eval.py --mode api
+```
+
+Resultados en `results/agent_eval_*.csv` y `results/agent_eval_summary_*.json`.
+
+| Flag | Qué hace |
+|---|---|
+| `--mode local` | Todo sin OpenAI |
+| `--mode api` | Agente y evaluadores con OpenAI (default) |
+| `--skip-llm` | Solo recall@k, mrr, product_hit, fallback |
+| `--limit N` | Evalúa solo las primeras N preguntas |
+
 ---
 
 #### Ramas sugeridas
