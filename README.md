@@ -98,6 +98,26 @@ Resultados en `results/agent_eval_*.csv` y `results/agent_eval_summary_*.json`.
 | `--skip-llm` | Solo recall@k, mrr, product_hit, fallback |
 | `--limit N` | Evalúa solo las primeras N preguntas |
 
+### 7. Interfaz Streamlit (chat)
+
+Interfaz pública del proyecto, desacoplada del agente RAG.
+
+```bash
+pip install -r requirements.txt
+copy .env.example .env
+streamlit run app/streamlit_app.py
+```
+
+Se abre en `http://localhost:8501`.
+
+| `CHAT_BACKEND` | Comportamiento |
+|---|---|
+| `mock` | Respuestas simuladas (como la rama `streamlit`) |
+| `local` o `rag` | Agente RAG sin OpenAI |
+| `api` | Agente RAG con OpenAI (`OPENAI_API_KEY` requerida) |
+
+La UI no cambia al conectar un backend nuevo; solo se configura `.env`.
+
 ---
 
 #### Ramas sugeridas
