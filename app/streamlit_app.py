@@ -4,14 +4,17 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from chat_service import ChatService
+from streamlit_theme import inject_argentina_theme
 
 load_dotenv()
 
 st.set_page_config(
     page_title="IA de Reseñas Amazon",
-    page_icon="🍕",
+    page_icon="🇦🇷",
     layout="centered",
 )
+
+inject_argentina_theme()
 
 backend = os.getenv("CHAT_BACKEND", "mock").lower()
 
