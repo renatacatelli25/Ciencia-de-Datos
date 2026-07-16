@@ -15,33 +15,20 @@ st.set_page_config(
 
 backend = os.getenv("CHAT_BACKEND", "mock").lower()
 
-st.title("🍕 Asistente de Reseñas Amazon")
-st.caption(
-    "Interfaz pública del proyecto Ciencia de Datos. "
-    f"Backend activo: **{backend}**."
-)
+title_col, status_col = st.columns([11, 1])
+with title_col:
+    st.title("🍕 Asistente de Reseñas Amazon")
+with status_col:
+    if backend == "api":
+        st.markdown(
+            '<p title="OpenAI API activa" style="margin:1.4rem 0 0;text-align:right;'
+            'font-size:1.1rem;line-height:1;color:#22c55e;">●</p>',
+            unsafe_allow_html=True,
+        )
+
+st.caption("Interfaz pública del proyecto Ciencia de Datos.")
 
 with st.sidebar:
-    st.header("Estado del sistema")
-    if backend == "mock":
-        st.success("Backend: MOCK")
-        st.info("LLM: no conectado")
-        st.info("Modelo ML: no conectado")
-        st.info("RAG: no conectado")
-    elif backend in ("rag", "local"):
-        st.success("Backend: RAG (local)")
-        st.info("Embeddings: sentence-transformers")
-        st.info("LLM: heurístico / CrossEncoder")
-        st.success("RAG: conectado")
-    elif backend == "api":
-        st.success("Backend: RAG (api)")
-        st.info("Embeddings: OpenAI")
-        st.warning("LLM: OpenAI (requiere API key)")
-        st.success("RAG: conectado")
-    else:
-        st.warning(f"Backend: {backend}")
-
-    st.caption("Cambiá `CHAT_BACKEND` en `.env` (mock | local | api | rag).")
     if st.button("Reiniciar conversación"):
         st.session_state.messages = []
         st.rerun()
